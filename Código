@@ -4,6 +4,29 @@ import numpy as np
 img = cv2.VideoCapture(0)
 
 while True:
+        # ----------------------- FILTROS LINEALES ------------------------
+
+          ret,frame = img.read()
+
+          if ret==True:
+
+              cv2.imshow('Video', frame)
+
+        ####################### RUIDO GAUSSIANO #####################
+
+              kernel = np.ones((5,5),np.float32)/25
+              Gaus = cv2.filter2D(frame,-1,kernel)
+
+              cv2.imshow('Filtro Gaussiano', Gaus)
+
+        ####################### BLUR #####################
+
+              blur = cv2.blur(frame,(1,1))
+              cv2.imshow('Filtro Blur', blur)
+
+
+
+
     ret, Captura_Video = img.read()
     if ret == True:
         kernel = np.ones((7,7),np.uint8)
