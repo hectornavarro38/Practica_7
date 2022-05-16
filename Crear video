@@ -1,0 +1,24 @@
+import cv2
+import numpy as np
+import os
+
+
+image_array = []
+
+input_images_path = 'C:/Users/hecto/Downloads/ExtraerFrames/frames'
+files_names = os.listdir(input_images_path)
+
+for file_name in files_names:
+    image_path = input_images_path + "/" +file_name
+    #print(image_path)
+    image = cv2.imread(image_path)
+    image_array.append(image_path)
+
+alto, ancho = image.shape[:2]
+
+video = cv2.VideoWriter('video.mp4',cv2.VideoWriter_fourcc(*'mp4v'),5,(ancho,alto))
+
+for i in range (0, len(image_array)):
+    video.write(image_array[i])
+
+video.release()
