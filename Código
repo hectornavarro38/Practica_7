@@ -4,7 +4,8 @@ import numpy as np
 img = cv2.VideoCapture(0)
 
 while True:
-        # ----------------------- FILTROS LINEALES ------------------------
+
+        # - FILTROS LINEALES 
 
           ret,frame = img.read()
 
@@ -12,14 +13,14 @@ while True:
 
               cv2.imshow('Video', frame)
 
-        ####################### RUIDO GAUSSIANO #####################
+       # RUIDO GAUSSIANO 
 
               kernel = np.ones((5,5),np.float32)/25
               Gaus = cv2.filter2D(frame,-1,kernel)
 
               cv2.imshow('Filtro Gaussiano', Gaus)
 
-        ####################### BLUR #####################
+        # BLUR 
 
               blur = cv2.blur(frame,(1,1))
               cv2.imshow('Filtro Blur', blur)
